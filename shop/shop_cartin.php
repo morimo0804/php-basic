@@ -40,7 +40,7 @@ try{
     $kazu=$_SESSION['kazu'];
     if(in_array($pro_code,$cart)==true){
       print'その商品はすでにカートに入っています。<br/><br/>';
-      print'<a href="shop_list.php">商品一覧へ戻る</a>';
+      print'<a class="btn" href="shop_list.php">商品一覧へ戻る</a>';
       exit();
     }
   }
@@ -58,7 +58,7 @@ catch(Exception $e){
 
 カートに追加しました。<br/>
 <br/>
-<a href="shop_list.php">商品一覧に戻る</a>
+<a class="btn" href="shop_list.php">商品一覧に戻る</a>
 
 </body>
 </html>

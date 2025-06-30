@@ -39,6 +39,7 @@ try{
     print'<h1>スタッフ一覧</h1><br/>';
 
     print'<form method="post" action="staff_branch.php">';
+    print'<div class="container">';
     while(true){
         $rec = $stmt->fetch(PDO::FETCH_ASSOC);
         if($rec==false){
@@ -48,6 +49,7 @@ try{
         print $rec['name'];
         print'<br/>';
     }
+    print'</div>';
     print'<input type="submit" name="disp" value="参照">';
     print'<input type="submit" name="add" value="追加">';
     print'<input type="submit" name="edit" value="修正">';
@@ -61,6 +63,6 @@ catch(Exception $e){
 ?>
 
 <br/>
-<a href="../staff_login/staff_top.php">トップメニューへ</a><br/>
+<a class="btn" href="../staff_login/staff_top.php">トップメニューへ</a><br/>
 </body>
 </html>

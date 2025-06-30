@@ -18,6 +18,6 @@ if(isset($_COOKIE[session_name()])==true){
   <body>
    ログアウトしました。<br/>
    <br/>
-   <a href="shop_list.php">商品一覧へ</a>
+   <a class="btn" href="shop_list.php">商品一覧へ</a>
   </body>
 </html>

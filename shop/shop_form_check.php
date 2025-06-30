@@ -51,10 +51,10 @@
     $address = $post['address'];
     $tel = $post['tel'];
     $chumon = $post['chumon'];
-    $pass = $post['pass'];
-    $pass2 = $post['pass2'];
-    $danjo = $post['danjo'];
-    $birth = $post['birth'];
+    $pass = isset($post['pass']) ? $post['pass'] : '';
+    $pass2 = isset($post['pass2']) ? $post['pass2'] : '';
+    $danjo = isset($post['danjo']) ? $post['danjo'] : '';
+    $birth = isset($post['birth']) ? $post['birth'] : '';
     $okflg = true;
 
     if ($onamae == '') {

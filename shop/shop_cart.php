@@ -18,6 +18,6 @@ if(isset($_COOKIE[session_name()])==true){
   <body>
    カートを空にしました。<br/>
    <br/>
-   <a href="../staff_login/staff_login.html">ログイン画面へ</a>
+   <a class="btn" href="../staff_login/staff_login.html">ログイン画面へ</a>
   </body>
 </html>

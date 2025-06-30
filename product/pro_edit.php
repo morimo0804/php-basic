@@ -24,7 +24,7 @@ if(isset($_SESSION['login'])==false){
   max-width: 600px;
   margin: 40px auto;
   padding: 30px;
-  background-color: #fafafa;
+ background-color: #dde9ea;
   border: 1px solid #ccc;
   border-radius: 10px;
   font-family: 'Arial', sans-serif;

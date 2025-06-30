@@ -33,7 +33,8 @@ if(isset($_SESSION['member_login'])==false){
     flex-wrap: wrap;
     justify-content: center;
     gap: 1.5rem;
-    margin: 30px 0 30px;
+    margin: 30px auto 30px;
+    max-width: 1200px;
   }
 
   .product-card {
@@ -41,7 +42,7 @@ if(isset($_SESSION['member_login'])==false){
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 1rem;
-    background-color: #f9f9f9;
+    background-color: #dde9ea;
     text-align: center;
     transition: box-shadow 0.3s ease;
   }
@@ -81,7 +82,7 @@ try{
     $dbh = new PDO($dsn, $user, $password);
     $dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
-    $sql = 'SELECT code,name,price FROM mst_product WHERE 1';
+    $sql = 'SELECT code, name, price, gazou FROM mst_product WHERE 1';
     $stmt = $dbh->prepare($sql);
     $stmt->execute();
 
@@ -97,6 +98,10 @@ try{
         }
        print '<div class="product-card">';
     print '<a href="shop_product.php?procode=' . $rec['code'] . '">';
+    if ($rec['gazou'] != '') {
+    $gazou_path = '../product/gazou/' . $rec['gazou'];
+    print '<img src="' . $gazou_path . '" alt="' . $rec['name'] . '" style="max-width:100%; height:auto; margin-bottom: 10px;">';
+  }
     print '<div class="product-name">' . $rec['name'] . '</div>';
     print '<div class="product-price">' . $rec['price'] . '円</div>';
     print '</a>';
@@ -104,7 +109,7 @@ try{
     }
 
     print'</div>';
-    print'<a href="shop_cartlook.php">カートを見る</a><br/>';
+    print'<a class="btn" href="shop_cartlook.php">カートを見る</a><br/>';
 }
 catch(Exception $e){
     print'ただいま障害により大変ご迷惑をお掛けしております。';

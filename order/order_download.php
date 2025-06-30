@@ -37,6 +37,8 @@ require_once('../common/common.php');
     <br/>
     <input type="submit" value="ダウンロードへ">
    </form>
+   <br>
+   <a class="btn" href="../staff_login/staff_top.php">戻る</a>
 
   </body>
 </html>

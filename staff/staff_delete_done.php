@@ -47,6 +47,6 @@ catch(Exception $e){
 
 削除しました。<br/>
 <br/>
-<a href="staff_list.php">戻る</a>
+<a class="btn" href="staff_list.php">戻る</a>
 </body>
 </html>

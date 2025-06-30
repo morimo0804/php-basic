@@ -30,6 +30,7 @@ if(isset($_SESSION['login'])==false){
   display: flex;
   flex-direction: column;
   gap: 15px;
+  background-color: #dde9ea;
 }
 
 .form-group {

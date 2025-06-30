@@ -32,16 +32,24 @@ if(isset($_SESSION['member_login'])==false){
       width: 80%;
       border-collapse: collapse;
       margin:0 auto 20px;
+       border: 1px solid #ccc;
+    }
+
+    .table-header th {
+    background-color: #1273ac;
+    padding: 10px;
+     border: 1px solid #ccc;
+     color:#fff;
     }
 
     td {
-      border: 1px solid #ccc;
       padding: 12px;
       text-align: center;
+       border: 1px solid #ccc;
     }
 
     tr:nth-child(even) {
-      background-color: #fafafa;
+      background-color: #dde9ea;
     }
 
     img {
@@ -82,6 +90,24 @@ try{
     exit();
   }
 
+  $submit_type = $_POST['submit_type'] ?? '';
+
+  // ===========================
+  // 削除処理（チェックが入っている商品を削除）
+  // ===========================
+  if ($submit_type === "削除する") {
+    for ($i = $max - 1; $i >= 0; $i--) {
+      if (isset($_POST["sakujo{$i}"]) && $_POST["sakujo{$i}"] === "on") {
+        array_splice($cart, $i, 1);
+        array_splice($kazu, $i, 1);
+      }
+    }
+    $_SESSION['cart'] = $cart;
+    $_SESSION['kazu'] = $kazu;
+    header("Location: shop_cart.php");
+    exit();
+  }
+
   $dsn='mysql:dbname=shop;host=localhost;charset=utf8';
   $user='root';
   $password='root';
@@ -116,14 +142,17 @@ catch(Exception $e){
 <h1>カートの中身</h1><br/>
 <form method="post" action="kazu_change.php">
   <table>
+    <thead class="table-header">
     <tr>
-      <td>商品</td>
-      <td>商品画像</td>
-      <td>価格</td>
-      <td>数量</td>
-      <td>小計</td>
-      <td>削除</td>
+      <th>商品</th>
+      <th>商品画像</th>
+      <th>価格</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th>削除</th>
     </tr>
+  </thead>
+  <tbody>
 <?php for($i=0;$i<$max;$i++){
   ?>
   <tr>
@@ -137,15 +166,17 @@ catch(Exception $e){
   <?php
 }
 ?>
+</tbody>
 </table>
 <input type="hidden" name="max" value="<?php print $max; ?>">
 <div class="flex">
   <input type="submit" value="数量変更">
+  <input type="submit" name="submit_type" value="削除する">
   <input type="button" onclick="history.back()" value="戻る">
 </div>
 </form>
 <br/>
-<a href="shop_form.html">ご購入手続きへ進む</a><br/>
+<a class="btn" href="shop_form.html">ご購入手続きへ進む</a><br/>
 
 <?php
 if(isset($_SESSION["member_login"])==true){

@@ -30,6 +30,7 @@ if(isset($_SESSION['login'])==false){
   flex-direction: column;
   gap: 20px;
   align-items: center;
+  background-color: #dde9ea;
 }
 
 .product-item {

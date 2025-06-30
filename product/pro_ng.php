@@ -22,7 +22,8 @@ if(isset($_SESSION['login'])==false){
 </head>
 <body>
 商品が選択されていません。<br/>
-<a href="pro_list.php">戻る</a>
+<br/>
+<a class="btn" href="pro_list.php">戻る</a>
 
 </body>
 </html>
