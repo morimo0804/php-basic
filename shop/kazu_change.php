@@ -1,4 +1,13 @@
-<?php
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ろくまる農園</title>
+    <link rel="stylesheet" href="../css/global.css" />
+  </head>
+  <body>
+    <?php
 session_start();
 session_regenerate_id(true);
 
@@ -15,7 +24,9 @@ for($i=0;$i<$max;$i++){
   }
   if($post['kazu'.$i]<1 || 10<$post['kazu'.$i]){
     print'数量は必ず1個以上、10個までです。';
-    print'<a href="shop_cartlook.php">カートに戻る</a>';
+    print'<br/>';
+    print'<br/>';
+    print'<a class="btn" href="shop_cartlook.php">カートに戻る</a>';
      exit();
   }
   $kazu[]=$post['kazu'.$i];
@@ -36,3 +47,6 @@ $_SESSION['kazu']=$kazu;
 header('Location:shop_cartlook.php');
 exit();
 ?>
+
+  </body>
+</html>

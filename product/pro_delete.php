@@ -73,6 +73,11 @@ if(isset($_SESSION['login'])==false){
   font-size: 16px;
   border-radius: 5px;
 }
+
+.delete{
+  font-weight: bold;
+  color:#f00;
+}
    </style>
 </head>
 <body>
@@ -127,7 +132,7 @@ catch(Exception $e){
     <?php print $disp_gazou; ?>
   </div>
 </div>
-この商品を削除してよろしいですか？<br/>
+この商品を<span class="delete">削除</span>してよろしいですか？<br/>
 <form method="post" action="pro_delete_done.php">
   <input type="hidden" name="code" value="<?php print $pro_code; ?>">
   <input type="hidden" name="gazou_name" value="<?php print $pro_gazou_name; ?>">

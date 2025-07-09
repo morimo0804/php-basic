@@ -44,8 +44,10 @@ try{
 
     $dbh = null;
 
+    print'<br/>';
     print$staff_name;
     print'さんを追加しました。<br/>';
+     print'<br/>';
 
 }
 catch(Exception $e){

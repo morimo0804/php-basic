@@ -46,6 +46,10 @@ input[type="button"]:hover {
   gap: 40px;
 }
 
+.border {
+  border-bottom: 1px dashed #868686;
+}
+
 .btn {
   display: inline-block;
   padding: 12px 24px;

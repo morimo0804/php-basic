@@ -3,15 +3,15 @@ session_start();
 session_regenerate_id(true);
 if(isset($_SESSION['member_login'])==false){
   print'ようこそゲスト様　';
-  print'<a href="member_login.html">会員ログイン</a><br/>';
+  print'<a href="member_login.html" class="login-button">会員ログイン</a><br/>';
   print'<br/>';
  } else{
-  print'ようこそ';
-  print'<span>';
+   print'ようこそ';
+   print'<span>';
    print$_SESSION['member_name'];
    print'</span>';
    print'様　';
-   print'<a href="member_logout.php">ログアウト</a><br/>';
+   print'<a href="member_logout.php" class="logout-button">ログアウト</a><br/>';
    print'<br/>';
  }
 ?>
@@ -24,6 +24,29 @@ if(isset($_SESSION['member_login'])==false){
   <title>ろくまる農園</title>
   <link rel="stylesheet" href="../css/global.css">
   <style>
+    .login-button,
+.logout-button {
+  display: inline-block;
+  padding: 8px 15px;
+ background-color: #28a745;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover,
+.logout-button:hover {
+  background-color: #218838;
+}
+
+.login-button {
+  margin-left: 10px;
+}
+
     span {
       font-weight: bold;
     }
@@ -88,15 +111,15 @@ catch(Exception $e){
 
 <h1>商品情報参照</h1><br/>
 <div class="box">
-  <div class="flex">
+  <div class="flex border">
     <div class="block">商品コード</div>
     <?php print $pro_code; ?>
   </div>
-  <div class="flex">
+  <div class="flex border">
     <div class="block">商品名</div>
     <?php print $pro_name; ?>
   </div>
-  <div class="flex">
+  <div class="flex border">
     <div class="block">価格</div>
     <?php print $pro_price; ?>円
   </div>

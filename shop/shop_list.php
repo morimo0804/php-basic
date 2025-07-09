@@ -1,9 +1,12 @@
 <?php
 session_start();
 session_regenerate_id(true);
+
+$member_message = '';
+
 if(isset($_SESSION['member_login'])==false){
   print'ようこそゲスト様　';
-  print'<a href="member_login.html">会員ログイン</a><br/>';
+  print'<a href="member_login.html" class="login-button">会員ログイン</a><br/>';
   print'<br/>';
  } else{
    print'ようこそ';
@@ -11,7 +14,7 @@ if(isset($_SESSION['member_login'])==false){
    print$_SESSION['member_name'];
    print'</span>';
    print'様　';
-   print'<a href="member_logout.php">ログアウト</a><br/>';
+   print'<a href="member_logout.php" class="logout-button">ログアウト</a><br/>';
    print'<br/>';
  }
 ?>
@@ -24,6 +27,29 @@ if(isset($_SESSION['member_login'])==false){
   <title>ろくまる農園</title>
   <link rel="stylesheet" href="../css/global.css">
   <style>
+.login-button,
+.logout-button {
+  display: inline-block;
+  padding: 8px 15px;
+ background-color: #28a745;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover,
+.logout-button:hover {
+  background-color: #218838;
+}
+
+.login-button {
+  margin-left: 10px;
+}
+
     span {
   font-weight: bold;
 }
@@ -63,18 +89,47 @@ if(isset($_SESSION['member_login'])==false){
   }
 
   .product-price {
-    color: #888;
+    color: #363636;
   }
 
   .cart-link {
     display: block;
     margin-top: 2rem;
   }
+
+  .cart-item-count{
+    position: absolute;
+    top: -7px;
+    right: -7px;
+    background-color: red;
+    color: #fff;
+    border-radius: 50%;
+    padding: 6px 8px;
+    font-size: 14px;
+    line-height: 1;
+    min-width: 20px;
+    text-align: center;
+    box-sizing: border-box;
+    z-index: 10;
+  }
+
+  .btn {
+    position: relative;
+  }
+
+  .btn:hover {
+    background-color: #0f6292;
+  }
+
+  .cart-empty {
+      display: none;
+  }
   </style>
 </head>
 <body>
 
 <?php
+
 try{
     $dsn = 'mysql:dbname=shop;host=localhost;charset=utf8';
     $user='root';
@@ -109,7 +164,23 @@ try{
     }
 
     print'</div>';
-    print'<a class="btn" href="shop_cartlook.php">カートを見る</a><br/>';
+    print'<br/>';
+   print'<div class="cart-container">';
+print'<a class="btn point" href="shop_cartlook.php">カートを見る';
+if (isset($_SESSION['cart'])) {
+    $cart = $_SESSION['cart'];
+    $shop_items = count($cart);
+} else {
+    $shop_items = 0;
+}
+if ($shop_items >= 1) {
+    print '<span class="cart-item-count">' . intval($shop_items) . '</span>';
+} else {
+    print '<span class="cart-item-count cart-empty"></span>';
+}
+
+print'</a>';
+print'</div><br/>';
 }
 catch(Exception $e){
     print'ただいま障害により大変ご迷惑をお掛けしております。';

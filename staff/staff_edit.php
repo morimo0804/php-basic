@@ -104,7 +104,7 @@ catch(Exception $e){
   <label>スタッフコード</label>
   <div class="value"><?php print $staff_code; ?></div>
 </div>
-<form method="post" action="staff_edit_check.php" class="form-container">
+<form method="post" action="staff_edit_done.php" class="form-container">
   <input type="hidden" name="code" value="<?php print $staff_code; ?>">
 
   <div class="form-group">

@@ -67,7 +67,7 @@ if(isset($_SESSION['login'])==false){
 </head>
 <body>
 <h1>スタッフ追加</h1>
-<form method="post" action="pro_add_check.php" enctype="multipart/form-data" class="form-container">
+<form method="post" action="staff_add_done.php" enctype="multipart/form-data" class="form-container">
   <div class="form-group">
     <label>スタッフ名</label>
     <input type="text" name="name">

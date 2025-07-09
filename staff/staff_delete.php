@@ -68,6 +68,11 @@ if(isset($_SESSION['login'])==false){
   font-size: 16px;
   border-radius: 5px;
 }
+
+.delete{
+  font-weight: bold;
+  color:#f00;
+}
    </style>
 </head>
 <body>
@@ -111,7 +116,7 @@ catch(Exception $e){
     <span class="value"><?php print $staff_name; ?></span>
   </div>
 </div>
-このスタッフを削除してよろしいですか？<br/>
+このスタッフを<span class="delete">削除</span>してよろしいですか？<br/>
 <form method="post" action="staff_delete_done.php">
   <input type="hidden" name="code" value="<?php print $staff_code; ?>">
      <div class="form-buttons">
