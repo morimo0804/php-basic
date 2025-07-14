@@ -30,10 +30,20 @@
       メールアドレス<br />
       <input type="text" name="email" style="width: 200px" /><br />
       郵便番号<br />
-      <input type="text" name="postal1" style="width: 50px" /> -
-      <input type="text" name="postal2" style="width: 80px" /><br />
+      <input type="text" name="postal1" id="postal1" style="width: 50px" /> -
+      <input
+        type="text"
+        name="postal2"
+        id="postal2"
+        style="width: 80px"
+      />　<button id="zipsearch">住所検索</button><br />
       住所<br />
-      <input type="text" name="address" style="width: 500px" /><br />
+      <input
+        type="text"
+        name="address"
+        id="address"
+        style="width: 500px"
+      /><br />
       電話番号<br />
       <input type="text" name="tel" style="width: 150px" /><br />
       <br />
@@ -77,5 +87,38 @@
       <input type="button" onclick="history.back()" value="戻る" />
       <input type="submit" value="OK" /><br />
     </form>
+    <script>
+      document
+        .getElementById("zipsearch")
+        .addEventListener("click", function (event) {
+          event.preventDefault();
+
+          const postal1 = document.getElementById("postal1").value.trim();
+          const postal2 = document.getElementById("postal2").value.trim();
+          const postal = postal1 + postal2;
+
+          if (postal.length !== 7 || !/^\d{7}$/.test(postal)) {
+            alert("郵便番号を正しく7桁で入力してください。");
+            return;
+          }
+
+          const url = `https://zipcloud.ibsnet.co.jp/api/search?zipcode=${postal}`;
+
+          fetch(url)
+            .then((res) => res.json())
+            .then((data) => {
+              if (data && data.results && data.results[0]) {
+                const r = data.results[0];
+                document.getElementById("address").value =
+                  r.address1 + r.address2 + r.address3;
+              } else {
+                alert("住所が見つかりませんでした。");
+              }
+            })
+            .catch((err) => {
+              alert("エラーが発生しました: " + err.message);
+            });
+        });
+    </script>
   </body>
 </html>

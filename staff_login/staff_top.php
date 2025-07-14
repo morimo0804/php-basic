@@ -34,6 +34,7 @@ if(isset($_SESSION['login'])==false){
       <a class="btn" href="../order/order_download.php">注文ダウンロード</a>
     </div>
     <br>
+    <br>
      <a class="btn" href="staff_logout.php">ログアウト</a><br/>
   </body>
 </html>
