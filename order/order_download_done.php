@@ -19,6 +19,12 @@ if(isset($_SESSION['login'])==false){
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ろくまる農園</title>
   <link rel="stylesheet" href="../css/global.css">
+  <style>
+    .flex{
+      display: flex;
+      align-items: center;
+    }
+  </style>
 </head>
 <body>
 
@@ -112,11 +118,12 @@ catch(Exception $e){
     exit();
 }
 ?>
-
-<a href="chumon.csv">注文データのダウンロード</a><br/>
+<br>
+<a class="btn" href="chumon.csv">注文データのダウンロード</a><br/>
 <br/>
-<a href="order_download.php">日付選択へ</a><br/>
-<br/>
-<a href="../staff_login/staff_top.php">トップメニューへ</a><br/>
+<div class="flex">
+  <a class="btn" href="order_download.php">日付選択へ</a>
+  <a class="btn" href="../staff_login/staff_top.php">トップメニューへ</a>
+</div>
 </body>
 </html>
