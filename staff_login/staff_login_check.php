@@ -1,4 +1,13 @@
-<?php
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ろくまる農園</title>
+    <link rel="stylesheet" href="../css/global.css" />
+  </head>
+  <body>
+   <?php
 
 try{
 
@@ -27,8 +36,8 @@ try{
     $rec=$stmt->fetch(PDO::FETCH_ASSOC);
 
     if($rec==false){
-        print'スタッフコードかパスワードが間違っています。<br/>';
-        print'<a href="staff_login.html">戻る</a>';
+        print'スタッフコードかパスワードが間違っています。<br/><br/>';
+        print'<a class="btn" href="staff_login.html">戻る</a>';
     } else{
         session_start();
         $_SESSION['login']=1;
@@ -45,3 +54,5 @@ catch(Exception $e){
 }
 
 ?>
+  </body>
+</html>
