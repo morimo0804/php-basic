@@ -10,7 +10,7 @@
         display: flex;
         flex-direction: column;
         gap: 12px;
-        max-width: 400px;
+        max-width: 600px;
         margin: 20px auto;
         padding: 30px;
         border: 1px solid #ccc;
