@@ -100,7 +100,6 @@ try{
   } else{
     $disp_gazou='<img src="../product/gazou/'.$pro_gazou_name.'">';
   }
-  print'<a class="btn" href="shop_cartin.php?procode='.$pro_code.'">カートに入れる</a><br/><br/>';
 }
 catch(Exception $e){
   print'ただいま障害により大変ご迷惑をお掛けしております。';
@@ -125,6 +124,7 @@ catch(Exception $e){
   </div>
   <?php print $disp_gazou; ?>
 </div>
+<?php print'<br/><a class="btn" href="shop_cartin.php?procode='.$pro_code.'">カートに入れる</a><br/><br/>'; ?>
 <form>
     <input type="button" onclick="history.back()" value="戻る">
 </form>
