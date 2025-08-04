@@ -91,6 +91,12 @@ if(isset($_SESSION['member_login'])==false){
       gap: 10px;
       justify-content: center;
     }
+
+    .total{
+      display: inline-block;
+      margin-bottom: 30px;
+      border-bottom: 1px dashed #333;
+    }
   </style>
 </head>
 <body>
@@ -154,6 +160,11 @@ try{
     }
   }
   $dbh=null;
+
+  $total_price = 0;
+  for($i=0; $i<$max; $i++){
+      $total_price += $pro_price[$i] * $kazu[$i];
+  }
 }
 catch(Exception $e){
   print'ただいま障害により大変ご迷惑をお掛けしております。';
@@ -191,6 +202,9 @@ catch(Exception $e){
 ?>
 </tbody>
 </table>
+<div class="total">
+  <strong>合計金額: <?php print $total_price; ?>円</strong>
+</div>
 <input type="hidden" name="max" value="<?php print $max; ?>">
 <div class="flex">
   <input type="submit" value="数量変更">

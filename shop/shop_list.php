@@ -55,18 +55,18 @@ if(isset($_SESSION['member_login'])==false){
 }
 
 .product-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1.5rem;
-    margin: 30px auto 30px;
-    max-width: 1200px;
+     display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+  gap: 2rem;
+  margin: 30px auto;
+  max-width: 1200px;
   }
 
   .product-card {
-    width: 200px;
+    width: 220px;
     border: 1px solid #ddd;
     border-radius: 8px;
+    margin: 0 auto;
     padding: 1rem;
     background-color: #dde9ea;
     text-align: center;
