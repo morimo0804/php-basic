@@ -56,14 +56,14 @@ if(isset($_SESSION['member_login'])==false){
 
 .product-list {
      display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2.3rem 1.8rem;
   margin: 30px auto;
   max-width: 1200px;
   }
 
   .product-card {
-    width: 220px;
+    width: 225px;
     border: 1px solid #ddd;
     border-radius: 8px;
     margin: 0 auto;
